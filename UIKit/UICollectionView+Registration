@@ -2,7 +2,6 @@ import class UIKit.UICollectionView
 import class UIKit.UICollectionViewCell
 import class UIKit.UICollectionReusableView
 
-// MARK: - Registering
 extension UICollectionView {
     
     typealias ReusableCell = UICollectionViewCell & Reusable
