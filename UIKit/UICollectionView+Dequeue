@@ -1,0 +1,31 @@
+import struct Foundation.IndexPath
+import class UIKit.UICollectionView
+
+// swiftlint:disable force_cast
+extension UICollectionView {
+    
+    func dequeue<T: Reusable>(for indexPath: IndexPath) -> T {
+        dequeueReusableCell(
+            withReuseIdentifier: T.reuseIdentifier,
+            for: indexPath
+        ) as! T
+    }
+    
+    func dequeueHeader<T: Reusable>(for indexPath: IndexPath) -> T {
+        dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: T.reuseIdentifier,
+            for: indexPath
+        ) as! T
+    }
+    
+    func dequeueFooter<T: Reusable>(for indexPath: IndexPath) -> T {
+        dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: T.reuseIdentifier,
+            for: indexPath
+        ) as! T
+    }
+    
+}
+// swiftlint:enable force_cast
