@@ -1,0 +1,49 @@
+import class UIKit.UICollectionView
+import class UIKit.UICollectionViewCell
+import class UIKit.UICollectionReusableView
+
+// MARK: - Registering
+extension UICollectionView {
+    
+    typealias ReusableCell = UICollectionViewCell & Reusable
+    typealias ReusableView = UICollectionReusableView & Reusable
+    
+    func register(cellClasses: ReusableCell.Type...) {
+        register(cellClasses: .init(cellClasses))
+    }
+    
+    func register(cellClasses: [ReusableCell.Type]) {
+        cellClasses
+            .forEach { cellClass in
+                register(cellClass.self,
+                         forCellWithReuseIdentifier: cellClass.reuseIdentifier)
+            }
+    }
+    
+    func register(headerClasses: ReusableView.Type...) {
+        register(headerClasses: .init(headerClasses))
+    }
+    
+    func register(headerClasses: [ReusableView.Type]) {
+        headerClasses
+            .forEach { headerClass in
+                register(headerClass.self,
+                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                         withReuseIdentifier: headerClass.reuseIdentifier)
+            }
+    }
+    
+    func register(footerClasses: ReusableView.Type...) {
+        register(footerClasses: .init(footerClasses))
+    }
+    
+    func register(footerClasses: [ReusableView.Type]) {
+        footerClasses
+            .forEach { headerClass in
+                register(headerClass.self,
+                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                         withReuseIdentifier: headerClass.reuseIdentifier)
+            }
+    }
+    
+}
