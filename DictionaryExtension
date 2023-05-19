@@ -1,0 +1,23 @@
+public extension Dictionary {
+    
+    /// Adds the passed dictionary to self, if key conflicts arise the passed dictionary values will win
+    /// - Parameter dictionary: A dictionary to append to self
+    /// - Returns: modified self
+    func appendingOrOverwriting(other dictionary: [Key: Value]) -> [Key: Value] {
+        self.merging(dictionary) { $1 }
+    }
+    
+    
+    /// Works exactly the same as `appendingOrOverwriting(other:)`, but is an operator.
+    /// The right hand side dictionary is superior if any conflicting keys are found.
+    ///
+    /// - Parameters:
+    ///   - lhs: source dictionary to which we append the other one
+    ///   - rhs: the dictionary we append to the `lhs`. Key:Value pairs from this dictionary
+    ///   will win if any conficts arise.
+    ///
+    /// - Returns: a new, merged dictionary
+    static func +(lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
+        lhs.appendingOrOverwriting(other: rhs)
+    }
+}
