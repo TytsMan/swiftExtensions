@@ -1,0 +1,3 @@
+extension CharacterSet {
+    static let rfc3986W3CAllowed = CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~")
+}
