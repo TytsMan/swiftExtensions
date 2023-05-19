@@ -2,14 +2,6 @@ import UIKit
 
 protocol Reusable {
     
-    static func reuseIdentifier() -> String
-    
-}
-
-extension Reusable where Self: UIView {
-    
-    static func reuseIdentifier() -> String {
-        String(describing: Self.self)
-    }
+    static var reuseIdentifier: String { get }
     
 }
