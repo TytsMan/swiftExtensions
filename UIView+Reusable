@@ -1,0 +1,9 @@
+import UIKit
+
+extension Reusable where Self: UIView {
+    
+    static var reuseIdentifier: String {
+        String(describing: Self.self)
+    }
+    
+}
