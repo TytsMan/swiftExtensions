@@ -1,0 +1,3 @@
+import class UIKit.UICollectionReusableView
+
+extension UICollectionReusableView: Reusable { }
